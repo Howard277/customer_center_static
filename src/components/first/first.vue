@@ -1,16 +1,9 @@
 <template>
-  <div>
-    <span>first</span>
-  </div>
+  <el-table :data="tableData" height="250" border style="width: 100%">
+    <el-table-column prop="fields.age" label="日期" width="180"></el-table-column>
+    <el-table-column prop="fields.name" label="姓名" width="180"></el-table-column>
+    <el-table-column prop="fields.sex" label="地址"></el-table-column>
+  </el-table>
 </template>
 
-<script>
-export default {
-  name: 'first',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
-</script>
+<script src='./first.js'></script>
