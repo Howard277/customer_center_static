@@ -10,7 +10,7 @@
       active-text-color="#ffd04b"
       router=true
     >
-      <el-menu-item index="/">处理中心</el-menu-item>
+      <el-menu-item index="/customer">客户管理</el-menu-item>
       <el-menu-item index="/first">订单管理</el-menu-item>
     </el-menu>
     <router-view/>
@@ -22,7 +22,7 @@ export default {
   name: 'App',
   data () {
     return {
-      activeIndex: '/'
+      activeIndex: '/customer'
     }
   },
   methods: {

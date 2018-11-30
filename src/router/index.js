@@ -11,8 +11,8 @@ export default new Router({
     name: 'HelloWorld',
     component: HelloWorld
   }, {
-    path: '/first',
-    name: 'first',
-    component: require('../components/first/first.vue').default
+    path: '/customer',
+    name: 'customer',
+    component: require('../components/customer/customer.vue').default
   }]
 })

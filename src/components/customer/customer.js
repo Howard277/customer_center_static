@@ -1,17 +1,22 @@
 import customer from '../../api/customer'
 
 export default {
-  name: 'first',
+  name: 'customer',
   data () {
     return {
-      tableData: []
+      tableData: [],
+      currentRow: null
     }
   },
   methods: {
     fresh: function () {
       customer.all().then(res => {
-        this.tableData = res.data
+        let tempData = res.data
+        this.tableData = tempData
       })
+    },
+    handleCurrentChange: function (val) {
+      this.currentRow = val
     }
   },
   created () {
