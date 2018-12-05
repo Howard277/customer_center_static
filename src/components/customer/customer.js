@@ -131,7 +131,7 @@ export default {
       this.fresh()
     }
   },
-  created() {
+  created () {
     this.fresh()
     this.loading = false
   }

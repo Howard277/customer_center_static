@@ -14,7 +14,7 @@
             <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteCustomer">删除</el-button>
           </el-col>
           <el-col :span="6">
-            <el-input placeholder="请输入内容" v-model="condition" class="input-with-select">
+            <el-input placeholder="搜索：姓名" v-model="condition" class="input-with-select">
               <el-button slot="append" icon="el-icon-search" @click="search">搜索</el-button>
             </el-input>
           </el-col>
@@ -34,6 +34,12 @@
           <el-table-column type="index" width="50"></el-table-column>
           <el-table-column prop="fields.name" label="姓名" width="180"></el-table-column>
           <el-table-column prop="fields.sexname" label="性别"></el-table-column>
+          <el-table-column prop="fields.age" label="年龄"></el-table-column>
+          <el-table-column prop="fields.id_card_no" label="身份证号"></el-table-column>
+          <el-table-column prop="fields.passport_no" label="护照号"></el-table-column>
+          <el-table-column prop="fields.phone_no" label="电话号码"></el-table-column>
+          <el-table-column prop="fields.phone_no_2" label="备用电话号码"></el-table-column>
+          <el-table-column prop="fields.home_address" label="家庭住址"></el-table-column>
         </el-table>
         <el-pagination
           background
@@ -48,13 +54,31 @@
         <!--客户列表 end-->
         <!--新增客户 对话框 start-->
         <el-dialog title="新增客户" :visible.sync="dialogFormAddCustomer">
-          <el-form :label-position="left" label-width="80px" :model="formLabelAlign">
-            <el-form-item label="客户姓名" style="width:300px;">
+          <el-form :label-position="left" label-width="120px" :model="formLabelAlign">
+            <el-form-item label="姓名" style="width:600px;">
               <el-input v-model="newcustomer.name" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="客户性别" style="width:300px;">
+            <el-form-item label="性别" style="text-align:left;">
               <el-radio v-model="newcustomer.sex" label="man" border>男</el-radio>
               <el-radio v-model="newcustomer.sex" label="woman" border>女</el-radio>
+            </el-form-item>
+            <el-form-item label="年龄" style="width:600px;">
+              <el-input v-model="newcustomer.age" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="身份证号" style="width:600px;">
+              <el-input v-model="newcustomer.id_card_no" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="护照号" style="width:600px;">
+              <el-input v-model="newcustomer.passport_no" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="电话号码" style="width:600px;">
+              <el-input v-model="newcustomer.phone_no" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="备用电话号码" style="width:600px;">
+              <el-input v-model="newcustomer.phone_no_2" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="家庭住址" style="width:600px;">
+              <el-input v-model="newcustomer.home_address" autocomplete="off"></el-input>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
