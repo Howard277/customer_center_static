@@ -47,8 +47,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     publicPath: config.dev.assetsPublicPath,
     proxy: [{
       changeOrigin: true,
-      context: ["/api/**"],
-      target: "http://localhost:8000/"
+      context: ["/customer_center_sidecar/**"],
+      target: "http://registercenter2:81/"
     }],
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
