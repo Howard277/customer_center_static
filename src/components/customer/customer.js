@@ -14,9 +14,7 @@ export default {
         pagesize: 10,
         currentpage: 1
       },
-      condition: {
-        name: ''
-      }
+      condition: null
     }
   },
   methods: {
@@ -26,7 +24,37 @@ export default {
         condition: this.condition
       }).then(res => {
         this.page = res.data.page
-        this.tableData = JSON.parse(res.data.data)
+        let customerList = JSON.parse(res.data.data)
+        for (let index in customerList) {
+          if (customerList[index]['fields']['sex'] === 'woman') {
+            customerList[index]['fields']['sexname'] = '女'
+          } else {
+            customerList[index]['fields']['sexname'] = '男'
+          }
+        }
+        this.tableData = customerList
+      })
+    },
+    // 搜索
+    search: function () {
+      customer.page_by_condition({
+        page: {
+          total: 0,
+          pagesize: 10,
+          currentpage: 1
+        },
+        condition: this.condition
+      }).then(res => {
+        this.page = res.data.page
+        let customerList = JSON.parse(res.data.data)
+        for (let index in customerList) {
+          if (customerList[index]['fields']['sex'] === 'woman') {
+            customerList[index]['fields']['sexname'] = '女'
+          } else {
+            customerList[index]['fields']['sexname'] = '男'
+          }
+        }
+        this.tableData = customerList
       })
     },
     // 处理行变更
@@ -103,7 +131,7 @@ export default {
       this.fresh()
     }
   },
-  created () {
+  created() {
     this.fresh()
     this.loading = false
   }

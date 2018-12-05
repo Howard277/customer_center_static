@@ -3,17 +3,27 @@
     <el-container>
       <el-header style="height:40px;">
         <el-row style="text-align:left;">
-          <el-button type="primary" size="small" icon="el-icon-search">搜索</el-button>
-          <el-button type="success" size="small" icon="el-icon-plus" @click="addCustomer">添加</el-button>
-          <el-button type="success" size="small" icon="el-icon-document" @click="detailCustomer">详情</el-button>
-          <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteCustomer">删除</el-button>
+          <el-col :span="18">
+            <el-button type="success" size="small" icon="el-icon-plus" @click="addCustomer">添加</el-button>
+            <el-button
+              type="success"
+              size="small"
+              icon="el-icon-document"
+              @click="detailCustomer"
+            >详情</el-button>
+            <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteCustomer">删除</el-button>
+          </el-col>
+          <el-col :span="6">
+            <el-input placeholder="请输入内容" v-model="condition" class="input-with-select">
+              <el-button slot="append" icon="el-icon-search" @click="search">搜索</el-button>
+            </el-input>
+          </el-col>
         </el-row>
       </el-header>
       <el-main>
         <!--客户列表 start-->
         <el-table
           :data="tableData"
-          height="550"
           border
           style="width: 100%"
           stripe
@@ -23,7 +33,7 @@
         >
           <el-table-column type="index" width="50"></el-table-column>
           <el-table-column prop="fields.name" label="姓名" width="180"></el-table-column>
-          <el-table-column prop="fields.sex" label="性别"></el-table-column>
+          <el-table-column prop="fields.sexname" label="性别"></el-table-column>
         </el-table>
         <el-pagination
           background
