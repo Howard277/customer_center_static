@@ -3,7 +3,7 @@
     <el-container>
       <el-header style="height:40px;">
         <el-row style="text-align:left;">
-          <el-col :span="18">
+          <el-col :span="14">
             <el-button type="success" size="small" icon="el-icon-plus" @click="addCustomer">添加</el-button>
             <el-button
               type="success"
@@ -13,8 +13,12 @@
             >详情</el-button>
             <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteCustomer">删除</el-button>
           </el-col>
-          <el-col :span="6">
-            <el-input placeholder="搜索：姓名" v-model="condition" class="input-with-select">
+          <el-col :span="10">
+            <el-input
+              placeholder="搜索：姓名、身份证号、护照号、电话号码、备用电话号码、家庭住址"
+              v-model="condition"
+              class="input-with-select"
+            >
               <el-button slot="append" icon="el-icon-search" @click="search">搜索</el-button>
             </el-input>
           </el-col>
