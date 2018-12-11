@@ -112,7 +112,7 @@
         </el-dialog>
         <!--新增客户 对话框 end-->
         <el-dialog title="客户联系人信息" :visible.sync="dialogRelationship">
-          <relationship :customer='currentRow'></relationship>
+          <relationship :customer='currentRow' ></relationship>
         </el-dialog>
       </el-main>
     </el-container>

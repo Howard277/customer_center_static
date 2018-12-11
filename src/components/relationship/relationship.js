@@ -20,7 +20,6 @@ export default {
     fresh: function () {
       this.loading = true
       relationship.get_by_customerid(this.customer.pk).then(res => {
-        debugger
         this.tableData = res.data
         for (let index in this.tableData) {
           if (this.tableData[index]['fields']['sex'] === 'woman') {
@@ -75,5 +74,8 @@ export default {
     customer: function (val) {
       this.fresh()
     }
+  },
+  created: function () {
+    this.fresh()
   }
 }
