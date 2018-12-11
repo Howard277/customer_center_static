@@ -1,6 +1,9 @@
 import customer from '../../api/customer'
 
 export default {
+  components: {
+    relationship: require('../relationship/relationship').default
+  },
   name: 'customer',
   data () {
     return {
@@ -14,7 +17,10 @@ export default {
         pagesize: 10,
         currentpage: 1
       },
-      condition: null
+      condition: null,
+      dialogVisible: false,
+      dialogRelationship: false,
+      label_position: 'left'
     }
   },
   methods: {
@@ -109,6 +115,16 @@ export default {
       this.newcustomer.id = this.currentRow.pk
       this.dialogFormAddCustomer = true
     },
+    detailRelationship: function () {
+      if (this.currentRow == null) {
+        this.$message({
+          message: '请选择一条记录！',
+          type: 'warning'
+        })
+        return
+      }
+      this.dialogRelationship = true
+    },
     // 添加客户对话框 保存按钮
     saveAddCustomer: function () {
       customer.save(this.newcustomer).then(res => {
@@ -129,6 +145,13 @@ export default {
     handleCurrentPageChange: function (val) {
       this.page.currentpage = val
       this.fresh()
+    },
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePictureCardPreview (file) {
+      this.dialogImageUrl = file.url
+      this.dialogVisible = true
     }
   },
   created () {

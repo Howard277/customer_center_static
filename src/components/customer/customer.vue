@@ -2,8 +2,8 @@
   <div>
     <el-container>
       <el-header style="height:40px;">
-        <el-row style="text-align:left;">
-          <el-col :span="14">
+        <el-row>
+          <el-col :span="14" style="text-align:left;">
             <el-button type="success" size="small" icon="el-icon-plus" @click="addCustomer">添加</el-button>
             <el-button
               type="success"
@@ -11,6 +11,12 @@
               icon="el-icon-document"
               @click="detailCustomer"
             >详情</el-button>
+            <el-button
+              type="success"
+              size="small"
+              icon="el-icon-document"
+              @click="detailRelationship"
+            >联系人</el-button>
             <el-button type="danger" size="small" icon="el-icon-delete" @click="deleteCustomer">删除</el-button>
           </el-col>
           <el-col :span="10">
@@ -58,11 +64,25 @@
         <!--客户列表 end-->
         <!--新增客户 对话框 start-->
         <el-dialog title="新增客户" :visible.sync="dialogFormAddCustomer">
-          <el-form :label-position="left" label-width="120px" :model="formLabelAlign">
+          <el-form :label-position="label_position" label-width="120px">
+            <el-form-item label="照片" style="width:600px;">
+              <el-upload
+                action="/customer/upload_customer_image"
+                list-type="picture-card"
+                :on-preview="handlePictureCardPreview"
+                :on-remove="handleRemove"
+                :data="currentRow"
+              >
+                <i class="el-icon-plus"></i>
+              </el-upload>
+              <el-dialog :visible.sync="dialogVisible">
+                <img width="100%" :src="newcustomer.photo_url">
+              </el-dialog>
+            </el-form-item>
             <el-form-item label="姓名" style="width:600px;">
               <el-input v-model="newcustomer.name" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="性别" style="text-align:left;">
+            <el-form-item label="性别">
               <el-radio v-model="newcustomer.sex" label="man" border>男</el-radio>
               <el-radio v-model="newcustomer.sex" label="woman" border>女</el-radio>
             </el-form-item>
@@ -91,6 +111,9 @@
           </div>
         </el-dialog>
         <!--新增客户 对话框 end-->
+        <el-dialog title="客户联系人信息" :visible.sync="dialogRelationship">
+          <relationship :customer='currentRow'></relationship>
+        </el-dialog>
       </el-main>
     </el-container>
   </div>
