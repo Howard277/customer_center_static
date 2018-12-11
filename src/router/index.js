@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import customer from '@/components/customer/customer.vue'
 
 Vue.use(Router)
 
@@ -8,6 +9,6 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'customer',
-    component: require('../components/customer/customer.vue').default
+    component: customer
   }]
 })

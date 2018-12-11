@@ -1,9 +1,7 @@
 import customer from '../../api/customer'
+import relationship from '@/components/relationship/relationship.vue'
 
 export default {
-  components: {
-    relationship: require('../relationship/relationship').default
-  },
   name: 'customer',
   data () {
     return {
@@ -22,6 +20,9 @@ export default {
       dialogRelationship: false,
       label_position: 'left'
     }
+  },
+  components: {
+    relationship
   },
   methods: {
     fresh: function () {
