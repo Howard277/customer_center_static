@@ -116,6 +116,7 @@ export default {
       this.newcustomer.id = this.currentRow.pk
       this.dialogFormAddCustomer = true
     },
+    // 显示 联系人 界面
     detailRelationship: function () {
       if (this.currentRow == null) {
         this.$message({
