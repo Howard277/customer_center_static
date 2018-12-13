@@ -7,7 +7,7 @@ export default {
     return {
       tableData: [],
       currentRow: null,
-      loading: true,
+      loading: false,
       dialogFormAddCustomer: false,
       newcustomer: {},
       page: {
@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     fresh: function () {
+      this.loading = true
       customer.page_by_condition({
         page: this.page,
         condition: this.condition
@@ -41,6 +42,7 @@ export default {
         }
         this.tableData = customerList
       })
+      this.loading = false
     },
     // 搜索
     search: function () {
@@ -158,6 +160,5 @@ export default {
   },
   created () {
     this.fresh()
-    this.loading = false
   }
 }

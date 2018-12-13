@@ -12,7 +12,7 @@
       style='margin-bottom:10px;'
     >
       <el-menu-item index="/">客户管理</el-menu-item>
-      <el-menu-item index="/first">订单管理</el-menu-item>
+      <el-menu-item index="/order">订单管理</el-menu-item>
     </el-menu>
     <router-view/>
   </div>
