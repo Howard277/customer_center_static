@@ -3,7 +3,7 @@ import relationship from '@/components/relationship/relationship.vue'
 
 export default {
   name: 'customer',
-  data () {
+  data() {
     return {
       tableData: [],
       currentRow: null,
@@ -150,15 +150,15 @@ export default {
       this.page.currentpage = val
       this.fresh()
     },
-    handleRemove (file, fileList) {
+    handleRemove(file, fileList) {
       console.log(file, fileList)
     },
-    handlePictureCardPreview (file) {
+    handlePictureCardPreview(file) {
       this.dialogImageUrl = file.url
       this.dialogVisible = true
     }
   },
-  created () {
+  created() {
     this.fresh()
   }
 }

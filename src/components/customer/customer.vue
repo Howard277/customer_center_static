@@ -67,17 +67,16 @@
           <el-form :label-position="label_position" label-width="120px">
             <el-form-item label="照片" style="width:600px;">
               <el-upload
-                action="/customer/upload_customer_image"
+                action="/mars_customer_center_sidecar/customer/upload_customer_image"
                 list-type="picture-card"
                 :on-preview="handlePictureCardPreview"
                 :on-remove="handleRemove"
                 :data="currentRow"
+                v-if="newcustomer.photo_url==null"
               >
                 <i class="el-icon-plus"></i>
               </el-upload>
-              <el-dialog :visible.sync="dialogVisible">
-                <img width="100%" :src="newcustomer.photo_url">
-              </el-dialog>
+              <img width="200px" v-else :src="newcustomer.photo_url">
             </el-form-item>
             <el-form-item label="姓名" style="width:600px;">
               <el-input v-model="newcustomer.name" autocomplete="off"></el-input>
@@ -112,7 +111,7 @@
         </el-dialog>
         <!--新增客户 对话框 end-->
         <el-dialog title="客户联系人信息" :visible.sync="dialogRelationship">
-          <relationship :customer='currentRow' ></relationship>
+          <relationship :customer="currentRow"></relationship>
         </el-dialog>
       </el-main>
     </el-container>
